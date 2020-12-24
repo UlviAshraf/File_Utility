@@ -21,14 +21,13 @@ import java.nio.file.*;
 
 
 /**
- *
  * @author UlviAshraf
  */
 public class FileUtility {
 
     public static void writeIntoFile(String fileName, String text) throws Exception {
         try (FileWriter fw = new FileWriter(fileName);
-                BufferedWriter bw = new BufferedWriter(fw);) {
+             BufferedWriter bw = new BufferedWriter(fw);) {
             bw.write(text);
         }
     }
@@ -48,16 +47,16 @@ public class FileUtility {
 
     public static void writeObject(String fileName, Serializable object) throws Exception {
         try (FileOutputStream fos = new FileOutputStream(fileName);
-                ObjectOutputStream oos = new ObjectOutputStream(fos);) {
-            oos.writeUnshared(object);
+             ObjectOutputStream oos = new ObjectOutputStream(fos);) {
+            oos.writeObject(object);
 
         }
     }
 
     public static String readFile(String fileName) throws Exception {
         try (FileInputStream fis = new FileInputStream(fileName);
-                InputStreamReader r = new InputStreamReader(fis);
-                BufferedReader reader = new BufferedReader(r);) {
+             InputStreamReader r = new InputStreamReader(fis);
+             BufferedReader reader = new BufferedReader(r);) {
             String line;
             String result = "";
             while ((line = reader.readLine()) != null) {
@@ -85,7 +84,7 @@ public class FileUtility {
     public static Object readObject(String fileName) throws Exception {
         Object obj;
         try (FileInputStream fis = new FileInputStream(fileName);
-                ObjectInputStream ois = new ObjectInputStream(fis);) {
+             ObjectInputStream ois = new ObjectInputStream(fis);) {
             obj = ois.readObject();
             return obj;
         }
